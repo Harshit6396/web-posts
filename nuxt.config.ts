@@ -1,51 +1,24 @@
-import tailwindcss from "@tailwindcss/vite";
-
 export default defineNuxtConfig({
-  app: {
-    head: {
-      link: [
-        {
-          rel: 'icon',
-          href: '/favicon.ico',  // Smaller version
-          sizes: '16x16'
-        }
-      ]
-    }
-  },
-  compatibilityDate: "2025-05-15",
-  ssr: false,
-  devtools: { enabled: true },
+    ssr: false,
+    compatibilityDate: '2025-08-15',
 
-  // Global CSS
-  css: ["@/assets/styles/global.css"],
+    css: ['@/assets/css/tailwind.css'],
 
-  // Vite configuration for TailwindCSS
-  vite: {
-    plugins: [
-      tailwindcss(), // Tailwind CSS plugin for Vite
-    ],
-  },
+    modules: ['@pinia/nuxt'],
 
-  // Build configuration
-  build: {
-    postcss: {
-      // PostCSS configuration
-      plugins: {
-        "postcss-preset-env": {
-          stage: 0, // You can adjust the stage based on your needs
-        },
-      },
+    pinia: {
+        autoImports: ['defineStore', 'storeToRefs'],
     },
-  },
 
-  // Static Site Generation (SSG) & SSR configuration
-  generate: {
-    fallback: true, // Ensure fallback is enabled for missing pages
-    interval: 2000, // Increase interval for slower pages during generation
-  },
+    devtools: { enabled: true },
 
-  // Nitro preset to ensure the correct server rendering method
-  nitro: {
-    preset: "node", // Use the Node preset to avoid issues with Nitropack during build
-  },
-});
+    build: {
+        postcss: {
+            plugins: {
+                tailwindcss: {},
+                autoprefixer: {},
+                'postcss-preset-env': { stage: 0 },
+            },
+        },
+    },
+})
