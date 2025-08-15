@@ -1,10 +1,13 @@
+import tailwindcss from "@tailwindcss/vite";
+
 export default defineNuxtConfig({
     ssr: false,
     compatibilityDate: '2025-08-15',
 
-    css: ['@/assets/css/tailwind.css'],
-
-    modules: ['@pinia/nuxt'],
+    // Pinia module
+    modules: [
+        '@pinia/nuxt',
+    ],
 
     pinia: {
         autoImports: ['defineStore', 'storeToRefs'],
@@ -12,13 +15,12 @@ export default defineNuxtConfig({
 
     devtools: { enabled: true },
 
-    build: {
-        postcss: {
-            plugins: {
-                tailwindcss: {},
-                autoprefixer: {},
-                'postcss-preset-env': { stage: 0 },
-            },
-        },
+        css: ['~/assets/css/tailwind.css'],
+
+    // Vite plugin for Tailwind CSS
+    vite: {
+        plugins: [
+            tailwindcss(), // Add Tailwind CSS Vite plugin
+        ],
     },
-})
+});

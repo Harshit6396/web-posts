@@ -1,21 +1,16 @@
 <template>
-  <div class="border p-4 rounded-lg shadow-md hover:shadow-lg cursor-pointer">
-    <h2 class="text-xl font-semibold">{{ post.title }}</h2>
-    <p class="text-gray-700 mt-2">{{ post.body }}</p>
-  </div>
+  <NuxtLink :to="`/posts/${post.id}`" class="block p-4 border rounded-lg shadow-lg hover:shadow-xl transition">
+    <h2 class="text-xl font-bold text-blue-600 mb-2">{{ post.title }}</h2>
+    <p class="text-gray-700">{{ post.body.substring(0, 100) }}...</p>
+  </NuxtLink>
 </template>
 
-<script setup lang="ts">
-import { defineProps } from 'vue'
-
-// Define the type for the post prop
-interface Post {
-  id: number
-  title: string
-  body: string
-}
-
+<script lang="ts" setup>
 defineProps<{
-  post: Post
+  post: { id: number; title: string; body: string }
 }>()
 </script>
+
+<style scoped>
+/* TailwindCSS handles styling, but you can add custom styles here */
+</style>
