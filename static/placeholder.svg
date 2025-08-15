@@ -1,0 +1,21 @@
+<template>
+    <div>
+        <h1>Technology Image</h1>
+        <img src="https://i.ibb.co/fz4rLBkW/Technology.png" alt="Technology Image" />
+    </div>
+</template>
+
+<script>
+export default {
+name: 'TechnologyImagePage'
+}
+</script>
+
+<style scoped>
+/* Optional: You can add some styling to your image */
+img {
+width: 100%;
+max-width: 600px;
+height: auto;
+}
+</style>
